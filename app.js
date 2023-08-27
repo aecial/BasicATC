@@ -50,12 +50,14 @@ function appendToView(item) {
   newEl.textContent = itemValue;
   newEl.classList.add("btn", "btn-dark", "text-white");
   newEl.addEventListener("click", function () {
-    let ans = confirm("Are you sure you want to delete this item?");
-    if (ans == true) {
-      let exactLocInDb = ref(database, `items/${itemID}`);
-      remove(exactLocInDb);
-      alert(`Successfully Removed '${itemValue}' from the database`);
-    }
+    let loc = ref(database, "items");
+    update(loc, { [itemID]: "Wazzup" });
+    // let ans = confirm("Are you sure you want to delete this item?");
+    // if (ans == true) {
+    //   let exactLocInDb = ref(database, `items/${itemID}`);
+    //   remove(exactLocInDb);
+    //   alert(`Successfully Removed '${itemValue}' from the database`);
+    // }
   });
   list.append(newEl);
 }
